@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Warp Remix Plugin
+
+This plugin allows developers to transpile Solidity contracts to Cairo from the Remix IDE. It uses Nethermind's [Warp](https://github.com/NethermindEth/warp) to do so.
+
+This is only a proof of concept and is not intended for production use at the moment.
+
+Since Warp was built to be used as a library, it is not possible to use it in the browser. Therefore, this plugin uses a Node.js server to run Warp and communicate with Remix.
+
+See server setup instructions [here](https://github.com/jelilat/warp-server). You need to run the server before to use this plugin.
 
 ## Getting Started
 
@@ -12,25 +20,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Add the plugin to Remix
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Go to the Plugins tab in Remix
+2. Click on the "Connect to a Local Plugin" button.
+3. Enter the name of the plugin: (e.g. `Warp`)
+4. Enter the URL of the plugin: (e.g. `http://localhost:3000/`).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Using the plugin
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Open a Solidity file in Remix.
+2. Click on the "Warp" button in the Plugins tab.
+3. Click on "Activate" to activate the plugin.
+4. Click on "Transpile" to transpile the contract to Cairo.
